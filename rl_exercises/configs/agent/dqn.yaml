@@ -14,6 +14,9 @@ agent:
   epsilon_decay:      500
   target_update_freq: 1000
 
+  hidden_dim: 64
+  depth: 2
+
 train:
   num_frames:     20000   # total env steps
   eval_interval:  1000    # print avg reward every this many episodes
