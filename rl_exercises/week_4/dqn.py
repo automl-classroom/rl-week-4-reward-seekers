@@ -250,9 +250,8 @@ class DQNAgent(AbstractAgent):
         with torch.no_grad():
             # TD target: r + γ * max Q(s', a') * (1 - done)
             # pass next states through target network
-            target = r + self.gamma * self.target_q(s_next).max(dim=1).values * (
-                1 - mask
-            )
+            target = r + self.gamma * self.target_q(s_next).max(dim=1)[0] * (1 - mask)
+            target = target.unsqueeze(1)
 
         loss = nn.MSELoss()(pred, target)
 
